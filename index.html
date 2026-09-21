@@ -516,6 +516,28 @@
     .brief-status{border-left-color:rgba(245,247,248,.32);color:rgba(245,247,248,.66)}
     .brief-status.status-warn{color:rgba(245,247,248,.74)!important;border-left-color:var(--brand)}
     .summary-status .status-warn{color:rgba(245,247,248,.74)!important}
+    /* ============ v23 时间尺构图：整屏时间轴作主体，下方三分栏 ============ */
+    .planner{grid-template-columns:1fr;gap:0;margin-top:30px}
+    .timeline-visual{min-height:352px;border-bottom:0}
+    .planner-copy{display:grid;grid-template-columns:minmax(300px,1.15fr) minmax(280px,1fr) minmax(210px,.75fr);gap:0;
+      padding:30px 30px 26px;border:1px solid rgba(245,247,248,.14);border-top:0;background:var(--flat);
+      backdrop-filter:blur(14px) saturate(1.12);-webkit-backdrop-filter:blur(14px) saturate(1.12)}
+    .planner-copy>*{grid-column:1/-1}
+    .planner-copy .kicker{grid-row:1}
+    .planner-copy h3{grid-column:1;grid-row:2;margin-top:14px;font-size:32px;line-height:1.24}
+    .planner-copy p{grid-column:1;grid-row:3;margin:14px 0 0;max-width:400px}
+    .readout{grid-column:2;grid-row:2/4;margin:0 30px;padding:20px 24px;align-self:start}
+    .readout time{font-size:56px}
+    .route-chip{grid-column:3;grid-row:2/4;margin:0;flex-direction:column;gap:8px}
+    .route-chip button{width:100%;text-align:left;padding:11px 14px}
+    .planner-copy .cover-actions{grid-row:4;margin-top:26px;padding-top:22px;border-top:1px solid var(--ln)}
+    @media(max-width:700px){
+      .timeline-visual{min-height:0}
+      .planner-copy{grid-template-columns:1fr;padding:20px 0 0;border:0;background:transparent;backdrop-filter:none}
+      .planner-copy>*{grid-column:1!important;grid-row:auto!important;margin-left:0!important;margin-right:0!important}
+      .route-chip{flex-direction:row;flex-wrap:wrap;gap:7px}
+      .route-chip button{width:auto}
+    }
   </style>
 </head>
 <body>
