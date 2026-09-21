@@ -796,6 +796,19 @@
     .app:has(.screen[data-screen="gallery"].active) .altbg-gallery{opacity:.3}
     /* v31 强制接管遮罩：覆盖任何更靠后的硬编码规则 */
     .backdrop:before{background:linear-gradient(100deg,var(--veil-a) 0%,var(--veil-b) 46%,var(--veil-c) 100%)!important}
+    /* ============ v32 文字对比修正：墨色整体加深 + 文字区保留薄雾 ============ */
+    :root{--ink-muted:rgba(26,34,38,.82);--ink-dim:rgba(26,34,38,.68)}
+    .page-heading p,.route-card p,.glass-card p,.share-box p,.weather p,.safety-panel p,.route-note,.planner-copy p,.kit-card span,.fact small,.forecast span,.wh-meta,.check-progress span,.cover .lead,.cover-does{color:rgba(26,34,38,.76)!important}
+    .verse{color:rgba(26,34,38,.86)!important}
+    .verse em{color:rgba(26,34,38,.64)!important}
+    .cover-verse{color:rgba(26,34,38,.84)!important}
+    .cover-verse span{color:rgba(26,34,38,.62)!important}
+    .kicker,.demo-tag,.elevation-card .elevation-label,.fact small,.kit-card em,.brief-kicker{color:rgba(26,34,38,.72)!important}
+    .waypoint span,.map-card .map-legend,.stations .hint,.screen-note,.check-item,.summary-tile small{color:rgba(26,34,38,.7)!important}
+    .display,.page-heading h2,.planner-copy h3,.glass-card h3,.route-card h3,.check-list h3,.safety-panel h3{text-shadow:0 1px 16px rgba(255,255,255,.7)}
+    /* 文字区保留一点雾，照片主体仍通透 */
+    .app{--veil-a:rgba(231,236,238,.7);--veil-b:rgba(231,236,238,.18);--veil-c:rgba(231,236,238,.3)}
+    .app[data-bright="1"]{--veil-a:rgba(231,236,238,.84);--veil-b:rgba(231,236,238,.4)}
   </style>
 </head>
 <body>
