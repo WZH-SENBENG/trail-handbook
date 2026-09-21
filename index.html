@@ -747,6 +747,18 @@
     .stations .hint{color:rgba(26,34,38,.45)}
     .readout{background:rgba(255,255,255,.6)!important}
     .elevation-card,.route-facts,.map-card,.waypoint-list,.safety-panel{background:rgba(255,255,255,.74)!important}
+    /* ============ v28 照片提亮一档 ============ */
+    .app{--veil-a:rgba(231,236,238,.72);--veil-b:rgba(231,236,238,.22);--veil-c:rgba(231,236,238,.36);--scene-grade:saturate(1.1) contrast(1.04) brightness(1.1)}
+    .app[data-bright="1"]{--veil-a:rgba(231,236,238,.86);--veil-b:rgba(231,236,238,.44);--veil-c:rgba(231,236,238,.54);--scene-grade:saturate(1.04) brightness(1.04)}
+    .app[data-bright="3"]{--veil-a:rgba(236,240,242,.5);--veil-b:rgba(236,240,242,.08);--veil-c:rgba(236,240,242,.16);--scene-grade:saturate(1.14) contrast(1.05) brightness(1.16)}
+    /* 关闭旧的 CSS 入场动画，改由 GSAP 接管 */
+    .screen.active .wc-temp,.screen.active .wc-wind,.screen.active #profileLine{stroke-dasharray:none;animation:none}
+    /* v28 修正：时间卡页分享区网格错位（票据通栏 + 按钮并排） */
+    .share-box{display:grid!important;grid-template-columns:repeat(2,max-content) 1fr!important;gap:14px 12px!important;padding:26px 30px!important;align-items:start}
+    .share-box h3,.share-box>p,.share-box .ticket,.share-box textarea.screen-reader-only{grid-column:1/-1!important}
+    .share-box .ticket{margin-top:6px}
+    .share-box .secondary{grid-column:auto!important;grid-row:auto!important;justify-self:start}
+    @media(max-width:700px){.share-box{grid-template-columns:1fr!important}.share-box .secondary{grid-column:1!important}}
   </style>
 </head>
 <body>
@@ -1067,14 +1079,27 @@
 
   /* ---------- 1. 入场动效：屏幕被激活时子元素错峰上升 ---------- */
   function animateScreen(scr){
-    if(reduce||!scr) return;
+    if(!scr) return;
     var kids=[].slice.call(scr.children);
-    kids.forEach(function(el,i){
-      el.style.animation='none';
-      void el.offsetWidth;                                  // 强制重排，保证重复进入也会重播
-      el.style.animation='riseIn .52s var(--ease-out) '+(i*62)+'ms both';
-      el.addEventListener('animationend',function(){ el.style.animation=''; },{once:true});
-    });
+    if(reduce||!window.gsap){
+      // 兜底：原来的 CSS 错峰上升
+      kids.forEach(function(el,i){ el.style.animation="none"; void el.offsetWidth;
+        el.style.animation="riseIn .52s var(--ease-out) "+(i*62)+"ms both";
+        el.addEventListener("animationend",function(){ el.style.animation=""; },{once:true}); });
+      return;
+    }
+    gsap.killTweensOf(kids);
+    gsap.fromTo(kids,{y:22,opacity:0},{y:0,opacity:1,duration:.62,stagger:.055,ease:"power3.out",clearProps:"transform,opacity"});
+    // 图表：进入该屏时用 GSAP 描绘曲线
+    var draw=scr.querySelectorAll(".wc-temp,.wc-wind,#profileLine");
+    if(draw.length){
+      [].forEach.call(draw,function(p){
+        var len=0; try{ len=p.getTotalLength?p.getTotalLength():0; }catch(e){}
+        if(!len) return;
+        gsap.set(p,{strokeDasharray:len,strokeDashoffset:len});
+        gsap.to(p,{strokeDashoffset:0,duration:1.25,ease:"power2.out",delay:.15,clearProps:"strokeDasharray,strokeDashoffset"});
+      });
+    }
   }
   var lastActive=null;
   var mo=new MutationObserver(function(){
