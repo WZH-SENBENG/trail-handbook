@@ -794,6 +794,8 @@
     .app:has(.screen[data-screen="weather"].active) .altbg-weather{opacity:.52}
     .app:has(.screen[data-screen="map"].active) .altbg-map{opacity:.5}
     .app:has(.screen[data-screen="gallery"].active) .altbg-gallery{opacity:.3}
+    /* v31 强制接管遮罩：覆盖任何更靠后的硬编码规则 */
+    .backdrop:before{background:linear-gradient(100deg,var(--veil-a) 0%,var(--veil-b) 46%,var(--veil-c) 100%)!important}
   </style>
 </head>
 <body>
