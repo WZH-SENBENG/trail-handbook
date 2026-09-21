@@ -640,6 +640,32 @@
     .app[data-bright="3"]{--flat:rgba(255,255,255,.8);--flat-2:rgba(250,252,252,.88)}
     .sun-track .track-done{stroke-dasharray:1162.4;stroke-linecap:butt}
     .cover-marquee{display:none!important}
+    /* ============ v25 浅色主题校准：雾变薄（背景更突出）+ 降眩光 + 顶栏底衬（修穿模）============ */
+    /* 1) 背景更突出：雾从 94% 降到 78%，亮档几乎透明 */
+    .app{--veil-a:rgba(231,236,238,.78);--veil-b:rgba(231,236,238,.28);--veil-c:rgba(231,236,238,.42);--veil-d:rgba(224,231,234,.32);--vig-a:rgba(210,220,223,.42);
+      --scene-grade:saturate(1.04) contrast(1.03) brightness(1.02)}
+    .app[data-bright="1"]{--veil-a:rgba(231,236,238,.9);--veil-b:rgba(231,236,238,.5);--veil-c:rgba(231,236,238,.6);--veil-d:rgba(224,231,234,.48);--vig-a:rgba(210,220,223,.52);--scene-grade:saturate(.98) brightness(.98)}
+    .app[data-bright="3"]{--veil-a:rgba(236,240,242,.58);--veil-b:rgba(236,240,242,.12);--veil-c:rgba(236,240,242,.22);--veil-d:rgba(232,238,240,.16);--vig-a:rgba(216,225,228,.18);--scene-grade:saturate(1.08) contrast(1.04) brightness(1.05)}
+    /* 2) 降眩光：底色压深一点、加顶部到底部的微渐变；面板不那么白；白光晕减半 */
+    body{background:#e6ebed}
+    .app{background:linear-gradient(180deg,#eaeef0 0%,#e3e9eb 100%)}
+    .route-card,.glass-card,.check-list,.safety-panel,.map-card,.waypoint-list,.weather,.ticket,
+    .elevation-card,.share-box,.kit-card,.summary-tile,.compare,.weather-hero,.brief,.planner-copy{background:rgba(255,255,255,.74)}
+    .app[data-bright="1"] .route-card,.app[data-bright="1"] .brief,.app[data-bright="1"] .elevation-card,.app[data-bright="1"] .planner-copy{background:rgba(255,255,255,.82)}
+    .app[data-bright="3"] .route-card,.app[data-bright="3"] .brief,.app[data-bright="3"] .elevation-card,.app[data-bright="3"] .planner-copy{background:rgba(255,255,255,.62)}
+    .display,.page-heading h2,.planner-copy h3,.glass-card h3,.route-card h3,.check-list h3,.safety-panel h3{text-shadow:0 1px 10px rgba(255,255,255,.45)}
+    /* 3) 顶栏与底部导航加底衬：修穿模 */
+    .topbar{left:0;right:0;top:0;padding:22px 42px 14px;background:linear-gradient(180deg,rgba(234,238,240,.94),rgba(234,238,240,.72));
+      backdrop-filter:blur(12px) saturate(1.05);-webkit-backdrop-filter:blur(12px) saturate(1.05);border-bottom:1px solid rgba(26,34,38,.07)}
+    .rail{left:0;right:0;bottom:0;padding:14px 42px 20px;background:linear-gradient(0deg,rgba(232,237,239,.95),rgba(232,237,239,.55));
+      backdrop-filter:blur(12px) saturate(1.05);-webkit-backdrop-filter:blur(12px) saturate(1.05);border-top:1px solid rgba(26,34,38,.07)}
+    @media(max-width:700px){
+      .topbar{padding:16px 22px 12px}
+      .rail{padding:12px 22px 16px;background:linear-gradient(0deg,rgba(232,237,239,.97),rgba(232,237,239,.6))}
+    }
+    .screen{padding-top:124px;padding-bottom:104px}
+    @media(max-width:700px){.screen{padding-top:104px;padding-bottom:104px}}
+    .backdrop:before{background:linear-gradient(100deg,var(--veil-a) 0%,var(--veil-b) 48%,var(--veil-c) 100%)}
   </style>
 </head>
 <body>
