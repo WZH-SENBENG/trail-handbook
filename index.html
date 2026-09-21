@@ -379,6 +379,106 @@
       .cover .primary{padding:16px 26px}
       .cover-marquee div{font-size:34px}
     }
+    /* ============ v19 全局设计语言：硬边 / 平面 / 单一强调色 / 中文排印 ============ */
+    :root{--r-1:2px;--r-2:3px;--r-3:4px}
+    /* 面板全部平面化：去玻璃、去柔光、去大圆角 */
+    .route-card,.glass-card,.check-list,.safety-panel,.map-card,.waypoint-list,.weather,.ticket,
+    .elevation-card,.share-box,.kit-card,.summary-tile,.compare,.weather-hero{
+      border-radius:0;border:1px solid var(--ln);background:var(--flat);box-shadow:none;backdrop-filter:none}
+    .route-card:hover,.kit-card:hover,.summary-tile:hover,.check-list:hover{box-shadow:none;border-color:var(--ln-2)}
+    .route-card.selected{border-color:var(--brand);background:var(--flat-2);box-shadow:none}
+    .route-card.selected:after{background:var(--brand);color:var(--on-brand);border-radius:0}
+    .glass-card:after{display:none}
+    .glass-card,.weather-hero{background:var(--flat)}
+    /* 标题排印：中文不做负字距，阶差收紧 */
+    .page-heading h2{font-size:38px;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+    .page-heading{padding-bottom:18px;border-bottom:1px solid var(--ln)}
+    .page-heading p{color:rgba(245,247,248,.58);font-size:13px;line-height:1.8}
+    .route-card h3,.glass-card h3,.planner-copy h3,.check-list h3,.weather h3,.safety-panel h3,.wh-info h3,.weather-hero h3,.waypoint-list h3,.share-box h3{
+      font-weight:600;letter-spacing:-.01em}
+    .glass-card h3,.planner-copy h3{font-size:30px}
+    .check-list h3,.weather h3,.safety-panel h3{font-size:24px}
+    .route-card h3{font-size:26px}
+    .wh-info h3{font-size:20px}
+    /* 次级文字统一一档灰 */
+    .route-card p,.glass-card p,.share-box p,.weather p,.safety-panel p,.route-note,.planner-copy p,
+    .kit-card span,.fact small,.forecast span,.wh-meta,.check-progress span{color:rgba(245,247,248,.58)}
+    /* 装饰性青色退场：标签一律中性，强调只留给主色 */
+    .kicker,.demo-tag,.elevation-card .elevation-label,.route-note b,.kit-card em,.ticket-head span,
+    .summary-score,.check-progress strong,.route-card .num,.waypoint time{color:rgba(245,247,248,.6)}
+    .route-card.selected .num,.route-card.selected .meta strong{color:var(--brand)}
+    .demo-tag{border-color:var(--ln-2);background:transparent;border-radius:0}
+    .feasible.ok{color:var(--safe);background:transparent;border:1px solid rgba(200,242,74,.45);border-radius:0}
+    .feasible.no{color:var(--alert-text);background:transparent;border:1px solid rgba(255,59,48,.45);border-radius:0}
+    /* 数字：等宽、白、不发光 */
+    .fact strong,.summary-tile strong,.check-progress strong,.forecast strong,.weather .big,.ticket-times time,.bt-node b{color:var(--ink);font-family:var(--font-mono);font-weight:400}
+    .summary-tile{border-top:1px solid var(--ln);border-left:0;border-right:0;border-bottom:0;padding:16px 0}
+    /* 交互元件：硬角、无渐变 */
+    .primary,.secondary{border-radius:0;transition:background var(--dur-2),color var(--dur-2),border-color var(--dur-2)}
+    .primary{background:var(--brand);border-color:var(--brand);color:var(--on-brand);font-weight:600}
+    .primary:hover{background:var(--brand-hi);box-shadow:none;transform:none}
+    .secondary{border-color:var(--ln-2);color:rgba(245,247,248,.8)}
+    .secondary:hover{border-color:rgba(245,247,248,.5);background:transparent;transform:none}
+    .route-chip button.active,.scenario-tabs button.active,.forecast button.active,.stations button.active{
+      border-color:var(--brand);background:transparent;color:var(--brand)}
+    .scenario-tabs button.active b,.forecast button.active small{color:var(--brand)}
+    .check-item input,.slider-wrap input{accent-color:var(--brand)}
+    .check-item{border-top:1px solid var(--ln)}
+    .check-item:has(input:checked){text-decoration-color:rgba(245,247,248,.35)}
+    .waypoint{border-top:1px solid var(--ln)}
+    .waypoint .dot{border-color:var(--ln-2);border-radius:50%}
+    .waypoint.done .dot{border-color:var(--safe);background:var(--safe);color:var(--on-brand)}
+    .waypoint-progress{background:var(--ln)}
+    .waypoint-progress i{background:rgba(245,247,248,.7)}
+    .stations button,.route-chip button{border-radius:0;border-color:var(--ln)}
+    .forecast button{border-radius:0;border-color:var(--ln);background:transparent}
+    .scenario-tabs button{border-radius:0;background:transparent}
+    /* 时间卡与简报：同一套硬边语言 */
+    .ticket{border-color:var(--ln-2)}
+    .ticket-head,.ticket-foot{border-color:var(--ln)}
+    .brief{border-radius:0;border:1px solid var(--ln);background:var(--flat);box-shadow:none}
+    .brief:before{background:var(--brand);height:1px}
+    .brief-kicker{color:rgba(245,247,248,.55);letter-spacing:.24em}
+    .brief h3{font-size:26px;font-weight:600;letter-spacing:-.01em}
+    .brief-track{border-color:var(--ln)}
+    .brief-badge{border-radius:0}
+    .brief-facts>div{border-radius:0;border-color:var(--ln);background:transparent}
+    .brief-status{border-left-color:rgba(245,247,248,.35);color:rgba(245,247,248,.62)}
+    .brief-status.status-warn{border-left-color:var(--brand);color:var(--brand)}
+    /* 画廊：硬边网格 */
+    .gtile{border-radius:0;border-color:var(--ln)}
+    .lightbox img,.lightbox .lb-strip button,.lightbox button{border-radius:0}
+    .lightbox>img{border-color:var(--ln-2)}
+    /* 表头与地图标签统一 */
+    .compare thead th{color:rgba(245,247,248,.55);background:transparent;border-bottom:1px solid var(--ln)}
+    .compare th,.compare td{border-color:var(--ln)}
+    .elev-readout{border-radius:0;border-color:var(--ln-2)}
+    .bright-ctl{border-radius:0}
+    .bright-ctl button{border-radius:0}
+    .bright-ctl button.on{background:var(--brand);color:var(--on-brand)}
+    .rail button:after{background:var(--brand)}
+    ::selection{background:var(--brand);color:var(--on-brand)}
+    input:focus-visible,button:focus-visible{outline-color:var(--brand)}
+    /* ============ v20 数据可视化去彩色：曲线/地图/剖面统一中性，只留主色一个强调 ============ */
+    .wc-temp{stroke:rgba(245,247,248,.88)}
+    .wc-wind{fill:rgba(245,247,248,.07);stroke:rgba(245,247,248,.26)}
+    .wc-grid{stroke:rgba(245,247,248,.08)}
+    .wc-axis{fill:rgba(245,247,248,.42)}
+    .wc-window{fill:rgba(245,247,248,.03);stroke:rgba(245,247,248,.2)}
+    .wc-window-label{fill:rgba(245,247,248,.5)}
+    .wc-precip-dot{fill:rgba(150,190,220,.55)}
+    .wc-now-line{stroke:rgba(245,247,248,.5)}
+    .wc-now-dot{fill:#fff;stroke:var(--brand)}
+    .wc-now-chip{fill:rgba(6,8,10,.95);stroke:var(--ln-2)}
+    .wc-now-chip-text{fill:var(--ink)}
+    .wh-temp b{background:none;-webkit-background-clip:initial;background-clip:initial;color:var(--ink);-webkit-text-fill-color:currentColor}
+    .weather-compass{color:var(--ink)}
+    #profileLine{stroke:rgba(245,247,248,.86)}
+    #elevFill stop{stop-color:#f5f7f8}
+    #mapRoute{stroke:rgba(245,247,248,.86)}
+    #plannerRoute{stroke:rgba(245,247,248,.86)}
+    .map-card .map-legend i{border-top-color:rgba(245,247,248,.5)}
+    .elevation-card .route-quote{color:var(--ink)}
   </style>
 </head>
 <body>
