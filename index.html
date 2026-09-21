@@ -771,6 +771,18 @@
       .timeline-visual,.elevation-card,.map-card{aspect-ratio:auto;min-height:0;height:auto}
       .timeline-visual svg,.elevation-card svg,.map-card svg{position:static;height:auto}
     }
+    /* ============ v30 修正：诗句可读性 + 「暗」档真的变暗 ============ */
+    .verse{color:rgba(26,34,38,.7)!important}
+    .verse em{font-size:11px!important;color:rgba(26,34,38,.52)!important;letter-spacing:.14em}
+    .cover-verse span{color:rgba(26,34,38,.5)!important}
+    .cover-verse{color:rgba(26,34,38,.68)}
+    .page-heading .verse{border-top-color:rgba(26,34,38,.12)}
+    /* 「暗」：整页压一层中性暗色滤镜（浅色主题下真的变暗），并把面板压成灰白 */
+    .app[data-bright="1"]{--bg:#cfd8db;--bg-app:#c9d3d7;--flat:rgba(226,232,235,.9)!important;--line:rgba(26,34,38,.18)}
+    .app[data-bright="1"]::after{content:"";position:absolute;inset:0;z-index:60;pointer-events:none;background:rgba(18,26,31,.24)}
+    .app[data-bright="1"] .route-card,.app[data-bright="1"] .brief,.app[data-bright="1"] .elevation-card,.app[data-bright="1"] .planner-copy,.app[data-bright="1"] .wx-hero,.app[data-bright="1"] .map-card,.app[data-bright="1"] .waypoint-list,.app[data-bright="1"] .safety-panel,.app[data-bright="1"] .check-list,.app[data-bright="1"] .glass-card,.app[data-bright="1"] .share-box,.app[data-bright="1"] .weather,.app[data-bright="1"] .ticket,.app[data-bright="1"] .compare,.app[data-bright="1"] .kit-card,.app[data-bright="1"] .summary-tile{background:rgba(228,233,236,.92)!important}
+    /* 「亮」：去掉暗角，最通透 */
+    .app[data-bright="3"]::after{display:none}
   </style>
 </head>
 <body>
