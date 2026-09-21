@@ -783,6 +783,9 @@
     .app[data-bright="1"] .route-card,.app[data-bright="1"] .brief,.app[data-bright="1"] .elevation-card,.app[data-bright="1"] .planner-copy,.app[data-bright="1"] .wx-hero,.app[data-bright="1"] .map-card,.app[data-bright="1"] .waypoint-list,.app[data-bright="1"] .safety-panel,.app[data-bright="1"] .check-list,.app[data-bright="1"] .glass-card,.app[data-bright="1"] .share-box,.app[data-bright="1"] .weather,.app[data-bright="1"] .ticket,.app[data-bright="1"] .compare,.app[data-bright="1"] .kit-card,.app[data-bright="1"] .summary-tile{background:rgba(228,233,236,.92)!important}
     /* 「亮」：去掉暗角，最通透 */
     .app[data-bright="3"]::after{display:none}
+    /* v30 收尾：分享区两个按钮强制同一行同一基线 */
+    .share-box .secondary{grid-column:auto!important;grid-row:3!important;align-self:start}
+    .share-box .secondary:nth-of-type(2){grid-column:2!important}
   </style>
 </head>
 <body>
