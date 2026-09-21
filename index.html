@@ -502,6 +502,20 @@
       .route-facts{grid-template-columns:1fr 1fr}
       .fact{border-bottom:1px solid var(--ln)}
     }
+    /* ============ v22 面板材质：半透深色 + 轻模糊，取代大面积纯黑 ============ */
+    :root{--flat:rgba(17,19,21,.84);--flat-2:rgba(26,29,32,.72)}
+    .route-card,.glass-card,.check-list,.safety-panel,.map-card,.waypoint-list,.weather,.ticket,
+    .elevation-card,.share-box,.kit-card,.summary-tile,.compare,.weather-hero,.brief{
+      background:var(--flat);backdrop-filter:blur(14px) saturate(1.12);-webkit-backdrop-filter:blur(14px) saturate(1.12);border-color:rgba(245,247,248,.14)}
+    .route-card.selected{background:linear-gradient(150deg,rgba(255,77,0,.10),rgba(17,19,21,.86));border-color:var(--brand)}
+    .route-note,.brief-facts>div{background:rgba(245,247,248,.03)}
+    .app[data-bright="3"]{--flat:rgba(17,19,21,.9)}
+    .app[data-bright="1"]{--flat:rgba(12,14,16,.9)}
+    /* 状态句只保留主色描边，文字回到中性，避免"整段橙色"像报错 */
+    .brief-status.status-warn{border-left-color:var(--brand);color:rgba(245,247,248,.74)}
+    .brief-status{border-left-color:rgba(245,247,248,.32);color:rgba(245,247,248,.66)}
+    .brief-status.status-warn{color:rgba(245,247,248,.74)!important;border-left-color:var(--brand)}
+    .summary-status .status-warn{color:rgba(245,247,248,.74)!important}
   </style>
 </head>
 <body>
