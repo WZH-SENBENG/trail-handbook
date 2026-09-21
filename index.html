@@ -666,6 +666,64 @@
     .screen{padding-top:124px;padding-bottom:104px}
     @media(max-width:700px){.screen{padding-top:104px;padding-bottom:104px}}
     .backdrop:before{background:linear-gradient(100deg,var(--veil-a) 0%,var(--veil-b) 48%,var(--veil-c) 100%)}
+    /* ============ v26 剩余五屏：地图 / 时间卡 / 装备 / 应变 / 画廊 ============ */
+    /* 地图：路线图整屏主体，节点横排成一条 */
+    .map-layout{grid-template-columns:1fr;gap:0}
+    .map-card{height:440px;border-bottom:0}
+    .waypoint-list{padding:8px 0 0}
+    .waypoint-list h3{margin:18px 22px 14px}
+    #waypoints{display:grid;grid-template-columns:repeat(5,1fr)}
+    .waypoint{display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:16px 18px 18px;border-top:1px solid var(--ln);border-left:1px solid var(--ln)}
+    .waypoint:first-child{border-left:0}
+    .waypoint .dot{width:20px;height:20px}
+    .waypoint b{font-size:13px}
+    .waypoint-progress{margin:0 22px 20px}
+    /* 时间卡：整屏票据 */
+    .card-layout{grid-template-columns:1fr;gap:0}
+    .glass-card{border-bottom:0}
+    .card-steps{margin-top:40px;gap:28px}
+    .card-steps .step time{font-size:34px}
+    .share-box{border-top:0;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;padding:26px 30px}
+    .share-box h3,.share-box>p{grid-column:1}
+    .share-box .ticket{grid-column:1;margin-top:18px}
+    .share-box .secondary{grid-column:2;justify-self:start}
+    .share-box .secondary:nth-of-type(1){grid-row:3}
+    .share-box .secondary:nth-of-type(2){grid-row:4}
+    .share-box textarea.screen-reader-only{grid-column:1/-1}
+    /* 装备：清单表格化 + 建议四栏 */
+    .check-layout{grid-template-columns:1fr;gap:0}
+    .check-list{padding:26px 30px 30px;border-bottom:0}
+    .check-progress strong{font-size:46px}
+    .check-item{padding:18px 4px;font-size:14px}
+    .kit-grid{grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--ln)}
+    .kit-card{border:0;border-right:1px solid var(--ln);border-radius:0;padding:20px 18px}
+    .kit-card:nth-child(4n){border-right:0}
+    .kit-card b{font-size:13px}
+    /* 应变：三栏并置，便于横向对比 */
+    .safety-layout{grid-template-columns:1fr;gap:0}
+    .scenario-tabs{grid-template-columns:repeat(3,1fr);gap:0}
+    .scenario-tabs button{padding:22px 20px;border:0;border-right:1px solid var(--ln);border-bottom:1px solid var(--ln)}
+    .scenario-tabs button:last-child{border-right:0}
+    .scenario-tabs button b{font-size:14px}
+    .safety-panel{border-top:0;padding:32px 30px}
+    .safety-panel h3{font-size:30px}
+    .safety-steps{margin-top:30px;gap:20px}
+    /* 画廊：网格略密，标题区留白加大 */
+    .gallery{grid-auto-rows:166px;gap:10px}
+    @media(min-width:1400px){.gallery{grid-auto-rows:180px}}
+    @media(max-width:700px){
+      .map-card{height:300px}
+      #waypoints{grid-template-columns:1fr 1fr}
+      .waypoint{border-left:0}
+      .share-box{grid-template-columns:1fr;padding:20px 0}
+      .share-box .secondary{grid-column:1!important;grid-row:auto!important}
+      .kit-grid{grid-template-columns:1fr}
+      .kit-card{border-right:0;border-bottom:1px solid var(--ln)}
+      .scenario-tabs{grid-template-columns:1fr}
+      .scenario-tabs button{border-right:0}
+      .safety-panel{padding:22px 0}
+      .gallery{grid-auto-rows:118px}
+    }
   </style>
 </head>
 <body>
