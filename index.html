@@ -786,6 +786,14 @@
     /* v30 收尾：分享区两个按钮强制同一行同一基线 */
     .share-box .secondary{grid-column:auto!important;grid-row:3!important;align-self:start}
     .share-box .secondary:nth-of-type(2){grid-column:2!important}
+    /* v31 背景凸显：雾再压薄（左 62% / 中 14%），照片再抬一档，专属背景提亮 */
+    .app{--veil-a:rgba(231,236,238,.62);--veil-b:rgba(231,236,238,.14);--veil-c:rgba(231,236,238,.26);--veil-d:rgba(224,231,234,.2);--vig-a:rgba(210,220,223,.3);
+      --scene-grade:saturate(1.14) contrast(1.05) brightness(1.13)}
+    .app[data-bright="1"]{--veil-a:rgba(231,236,238,.8);--veil-b:rgba(231,236,238,.34);--veil-c:rgba(231,236,238,.46);--scene-grade:saturate(1.08) brightness(1.06)}
+    .app[data-bright="3"]{--veil-a:rgba(236,240,242,.4);--veil-b:rgba(236,240,242,.04);--veil-c:rgba(236,240,242,.12);--veil-d:rgba(232,238,240,.1);--vig-a:rgba(216,225,228,.14);--scene-grade:saturate(1.18) contrast(1.06) brightness(1.2)}
+    .app:has(.screen[data-screen="weather"].active) .altbg-weather{opacity:.52}
+    .app:has(.screen[data-screen="map"].active) .altbg-map{opacity:.5}
+    .app:has(.screen[data-screen="gallery"].active) .altbg-gallery{opacity:.3}
   </style>
 </head>
 <body>
